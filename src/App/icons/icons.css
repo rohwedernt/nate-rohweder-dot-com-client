@@ -1,0 +1,15 @@
+.icon {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    left: -232px;
+    top: -25px;
+    filter: grayscale(100%);
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.icon:hover {
+    filter: none;
+    cursor: pointer;
+}
