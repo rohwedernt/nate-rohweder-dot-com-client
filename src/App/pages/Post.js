@@ -35,46 +35,23 @@ const subtitleStyle = {
     fontWeight: 'bold'
 }
 
+function Post(props) {
+  const title = props.postData.title;
+  const img = props.postData.imgSrc;
+  const content = props.postData.content;
 
-
-class Post extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      list: []
-    }
-  }
-
-  componentDidMount() {
-    this.getPost();
-  }
-
-  getPost = () => {
-    fetch('/api/getPost')
-    .then(res => res.json())
-    .then(list => this.setState({ list }))
-  }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <PostAnimator>
-        <Paper className={classes.root} elevation={4}>
-          <div style={postStyle}>{aboutPost.title}</div>
-          <Avatar style={avatarStyle} src={aboutPost.imgPath} className={classes.avatar} />
-          <Typography component="p">
-            <p style={subtitleStyle}>{aboutPost.welcome.title},</p>
-              {aboutPost.welcome.content}
-                <a href="www.google.com">here.</a>
-            <p style={subtitleStyle}>{aboutPost.work.title},</p>
-              {aboutPost.work.content}
-            <p style={subtitleStyle}>{aboutPost.music.title},</p>
-              {aboutPost.music.content}
-          </Typography>
-        </Paper>
-      </PostAnimator>
-    );
-  }
+  return(
+    <PostAnimator>
+      <Paper className={props.classes.root} elevation={4}>
+        <div style={postStyle}>{title}</div>
+        <Avatar style={avatarStyle} src={img} className={props.classes.avatar} />
+        <Typography component="p">
+          {/* <p style={subtitleStyle}>{aboutPost.welcome.title},</p> */}
+            {content}
+        </Typography>
+      </Paper>
+    </PostAnimator>
+  );
 }
 
 export default withStyles(styles)(Post);

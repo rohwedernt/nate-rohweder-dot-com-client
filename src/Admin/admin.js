@@ -1,5 +1,12 @@
 import React from 'react';
 
+const AppNav = () => (
+   <nav class="navbar navbar-dark bg-dark">
+       <a class="navbar-brand" href="#">My Blog</a>
+       <a role="button" class="btn btn-outline-info navbar-btn" href="/logout">Logout</a>
+   </nav>
+);
+
 const Card = ({ item, handleSubmit, handleEdit, handleDelete, handleCancel }) => {
    const { title, content, editMode } = item;
 
@@ -46,15 +53,10 @@ class Admin extends React.Component {
    }
 
    getPosts = async () => {
-       const response = await fetch('/posts')
-       //const data = await response.json();
-        .then(res => res.text())          // convert to plain text
-        .then(text => console.log(text))  // then log it out
-
-
-
-       //data.forEach(item => item.editMode = false);
-       //this.setState({ data })
+       const response = await fetch('/posts');
+       const data = await response.json();
+       data.forEach(item => item.editMode = false);
+       this.setState({ data })
    }
 
    addNewPost = () => {
@@ -125,6 +127,7 @@ class Admin extends React.Component {
    render() {
        return (
            <div>
+               <AppNav />
                <button type="button" class="mt-4 mb-2 btn btn-primary btn-sm float-right" onClick={this.addNewPost}>
                    Add New Post
                </button>
@@ -147,5 +150,3 @@ class Admin extends React.Component {
        );
    }
 }
-
-export default Admin;
