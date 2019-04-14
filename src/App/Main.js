@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from '../components/Navigation';
-import Router from '../Router';
+import Navigation from './components/Navigation';
+import Router from './Router';
 
 
 function Main(props) {
@@ -9,7 +9,6 @@ function Main(props) {
             <Navigation />
             <Router {...props} />
         </div>
-        
     );
 }
 

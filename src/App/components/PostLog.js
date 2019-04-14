@@ -9,8 +9,12 @@ function PostLog(props) {
                 : data.map(dat => (
                     <li style={{ padding: "10px" }} key={data.message}>
                         <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
-                        <span style={{ color: "gray" }}> data: </span>
-                        {dat.title + dat.imgSrc + dat.content} 
+                        <span style={{ color: "gray" }}> title: </span>
+                        {dat.title} <br />
+                        <span style={{ color: "gray" }}> img: </span>
+                        {dat.imgSrc} <br />
+                        <span style={{ color: "gray" }}> content: </span>
+                        {dat.content} <br />
                     </li>
             ))}
         </ul>

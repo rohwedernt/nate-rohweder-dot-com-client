@@ -2,15 +2,16 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import PostAnimator from '../components/PostAnimator';
+import PostAnimator from './PostAnimator';
 import Avatar from '@material-ui/core/Avatar';
-
 
 const styles = theme => ({
   root: theme.mixins.gutters({
+    marginTop: 40,
     paddingTop: 16,
     paddingBottom: 16,
-    whiteSpace: 'pre-line'
+    whiteSpace: 'pre-line',
+    overflow: 'auto'
   }),
 });
 
@@ -28,7 +29,7 @@ const avatarStyle = {
     width: '300px',
     height: '300px',
     borderRadius: '5px',
-    margin: '20px 20px 10px 10px'
+    marginLeft: '20px'
 }
 
 const subtitleStyle = {
@@ -36,22 +37,24 @@ const subtitleStyle = {
 }
 
 function Post(props) {
-  const title = props.postData.title;
-  const img = props.postData.imgSrc;
-  const content = props.postData.content;
-
-  return(
-    <PostAnimator>
-      <Paper className={props.classes.root} elevation={4}>
-        <div style={postStyle}>{title}</div>
-        <Avatar style={avatarStyle} src={img} className={props.classes.avatar} />
-        <Typography component="p">
-          {/* <p style={subtitleStyle}>{aboutPost.welcome.title},</p> */}
+  if(props.postData) {
+    const title = props.postData.title;
+    const img = props.postData.imgSrc;
+    const content = props.postData.content;
+    
+    return(
+      <PostAnimator>
+        <Paper className={props.classes.root} elevation={4}>
+          <div style={postStyle}>{title}</div>
+          <Typography component="p">
+            <Avatar style={avatarStyle} src={img} className={props.classes.avatar} />
+            {/* <p style={subtitleStyle}>{aboutPost.welcome.title},</p> */}
             {content}
-        </Typography>
-      </Paper>
-    </PostAnimator>
-  );
+          </Typography>
+        </Paper>
+      </PostAnimator>
+    );
+  } else return <div />
 }
 
 export default withStyles(styles)(Post);

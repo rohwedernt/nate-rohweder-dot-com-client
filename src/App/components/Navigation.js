@@ -3,7 +3,7 @@ import NavigationItem from './NavigationItem';
 
 const style = {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
 }
 
 const ulStyle = {
@@ -26,19 +26,19 @@ class Navigation extends Component {
             text="about" 
           />
           <NavigationItem
-            destination="/code"
+            destination="/codeStuff"
             text="codeStuff"
           />
           <NavigationItem 
-            destination="/music" 
+            destination="/musicStuff" 
             text="musicStuff" 
           />
           <NavigationItem 
-            destination="/travel" 
+            destination="/travelStuff" 
             text="travelStuff" 
           />
           <NavigationItem
-            destination="/craftBeer"
+            destination="/craftBeerStuff"
             text="craftBeerStuff"
           />
         </ul>

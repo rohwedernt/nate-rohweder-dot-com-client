@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AdminInput from './AdminInput';
-import PostLog from './PostLog';
+import AdminInput from '../components/AdminInput';
+import PostLog from '../components/PostLog';
 
 
 class Admin extends Component {
@@ -18,8 +18,6 @@ class Admin extends Component {
     
     return (
       <div>
-        <PostLog data={data} />
-
         <div style={{ padding: "20px" }}>
           <h3>Add Post</h3>
           <AdminInput onChange={handleTitleChange} placeholder='title' />
@@ -30,6 +28,7 @@ class Admin extends Component {
             <option value="music">Music</option>
             <option value="beer">Craft Beer</option>
             <option value="travel">Travel</option>
+            <option value="about">About</option>
           </select>
           <button onClick={handleAddPostSubmit}>
             ADD
@@ -54,7 +53,8 @@ class Admin extends Component {
             UPDATE
           </button>
         </div>
-
+        <h3>Posts</h3>
+        <PostLog data={data} />
       </div>
     );
   }
