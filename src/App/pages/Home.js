@@ -9,7 +9,7 @@ const HomeContentAnimator = posed.div({
   open: {
     y: '0%',
     delayChildren: 0,
-    staggerChildren: 100,
+    staggerChildren: 150,
     transition: {
         y: { type: 'spring', stiffness: 300, damping: 100 },
         default: { duration: 1000 }
@@ -31,8 +31,6 @@ class Home extends React.PureComponent {
     const { isOpen } = this.state;
 
     return (
-      <div>
-        <Navigation />
         <HomeContentAnimator className="blog-content" pose={isOpen ? 'open' : 'closed'}>
           <SocialIcon target='https://github.com/rohwedernt'>
             <Github />
@@ -50,8 +48,6 @@ class Home extends React.PureComponent {
             <Instagram />
           </SocialIcon>
        </HomeContentAnimator>
-      </div>
-
     );
   }
 }

@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Home from './pages/Home';
-import List from './pages/List'
+import Admin from './pages/testpost'
+import Navigation from './components/Navigation';
 import './App.css';
 
 
@@ -28,10 +29,11 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <div className="app" style={style}>
+          <Navigation />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/home" component={Home} />
-              <Route path="/about" component={List} />
+              <Route path="/about" component={Admin} />
             </Switch>
           </div>
         </MuiThemeProvider>

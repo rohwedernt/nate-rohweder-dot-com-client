@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NavigationItem from './NavigationItem';
 
 const style = {
-    paddingTop: '30px',
     display: 'flex',
     justifyContent: 'center'
 }
