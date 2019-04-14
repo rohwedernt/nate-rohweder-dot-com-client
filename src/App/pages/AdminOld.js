@@ -3,7 +3,7 @@ import AdminInput from '../components/AdminInput';
 import PostLog from '../components/PostLog';
 
 
-class Admin extends Component {
+class AdminOld extends Component {
   render() {
     const {
       data,
@@ -60,4 +60,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default AdminOld;

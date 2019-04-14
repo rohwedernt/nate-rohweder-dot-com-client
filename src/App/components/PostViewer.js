@@ -33,7 +33,7 @@ class PostViewer extends React.PureComponent {
   render() {
     if(this.props.routerProps.data) {
         const { isOpen } = this.state;
-        let data = this.props.routerProps.data;
+        let data = this.props.routerProps.data.filter(x => x.type == this.props.postType);
         return (
           <PostViewerAnimator className="blog-content" pose={isOpen ? 'open' : 'closed'}>
             {data.length <= 0 ? "NO POSTS FOUND" : data.map(dat => (

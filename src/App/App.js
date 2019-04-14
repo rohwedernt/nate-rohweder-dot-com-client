@@ -29,6 +29,7 @@ class App extends Component {
       title: null,
       imgSrc: null,
       content: null,
+      type: null,
       intervalIsSet: false,
       idToDelete: null,
       idToUpdate: null,
@@ -113,6 +114,8 @@ class App extends Component {
 
   handleIdChange = e => this.setState({ idToDelete: e.target.value });
 
+  handleTypeChange = e => this.setState({ type: e.target.value });
+
   handleAddPostSubmit = () => this.putDataToDB(this.state.title, this.state.imgSrc, this.state.content);
 
   handleDeletePostSubmit = () => this.deleteFromDB(this.state.idToDelete);
@@ -126,6 +129,7 @@ class App extends Component {
       handleImgSrcChange: this.handleImgSrcChange,
       handleContentChange: this.handleContentChange,
       handleIdChange: this.handleIdChange,
+      handleTypeChange: this.handleTypeChange,
       handleAddPostSubmit: this.handleAddPostSubmit,
       handleDeletePostSubmit: this.handleDeletePostSubmit,
       handleUpdatePostSubmit: this.handleUpdatePostSubmit

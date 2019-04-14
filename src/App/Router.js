@@ -1,11 +1,18 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Admin from './pages/Admin';
+import Admin from './pages/AdminAuth';
 import About from './pages/About';
 import PostViewer from './components/PostViewer';
 import Post from './components/Post';
+import { Security, ImplicitCallback } from '@okta/okta-react';
 
+
+const config = {
+    issuer: 'https://dev-577962.okta.com/oauth2/default',
+    redirect_uri: window.location.origin + '/implicit/callback',
+    client_id: '0oah0k2lwujlUlv1n356'
+  }
 
 class Router extends React.Component {
     constructor(props) {
@@ -27,16 +34,29 @@ class Router extends React.Component {
                 />
                 <Route 
                     path='/codeStuff'
-                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} />}
+                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='code' />}
+                />
+                <Route 
+                    path='/musicStuff'
+                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='music' />}
+                />
+                <Route 
+                    path='/travelstuff'
+                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='travel' />}
+                />
+                <Route 
+                    path='/craftBeerStuff'
+                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='beer' />}
                 />
                 <Route 
                     path='/post/:id'
                     render={() => <Post postData={currentPost} />}
                 />
-                <Route 
-                    path="/admin" 
-                    render={() => <Admin {...this.props} />}
-                />
+
+                <Security issuer={config.issuer} client_id={config.client_id} redirect_uri={config.redirect_uri}>
+                    <Route path='/admin' render={() => <Admin {...this.props} />}/>
+                    <Route path='/implicit/callback' component={ImplicitCallback}/>
+                </Security>
             </Switch>
         );
     }

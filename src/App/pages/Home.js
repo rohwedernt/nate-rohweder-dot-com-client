@@ -2,7 +2,6 @@ import React from 'react';
 import posed from 'react-pose';
 import {Github, Facebook, LinkedIn, Twitter, Instagram} from '../icons/icons';
 import SocialIcon from '../components/SocialIcon';
-import Navigation from '../components/Navigation';
 
 
 const HomeContentAnimator = posed.div({
