@@ -22,7 +22,7 @@ function AdminView(props) {
             <AdminInput onChange={handleTitleChange} placeholder='title' />
             <AdminInput onChange={handleImgSrcChange} placeholder='image' />
             <AdminInput onChange={handleContentChange} placeholder='content' />
-            <select onChange={handleTypeChange}>
+            <select onChange={handleTypeChange} >
                 <option value="code">Code</option>
                 <option value="music">Music</option>
                 <option value="beer">Craft Beer</option>

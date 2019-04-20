@@ -25,11 +25,11 @@ const postStyle = {
 }
 
 const avatarStyle = {
-    float: 'right',
+    float: 'left',
     width: '300px',
     height: '300px',
     borderRadius: '5px',
-    marginLeft: '20px'
+    margin: '0 20px 20px 0'
 }
 
 const subtitleStyle = {

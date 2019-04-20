@@ -58,7 +58,7 @@ class App extends Component {
       .then(res => this.setState({ data: res.data }));
   };
 
-  putDataToDB = (title, imgSrc, content) => {
+  putDataToDB = (title, imgSrc, content, type) => {
     let currentIds = this.state.data.map(data => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
@@ -69,7 +69,8 @@ class App extends Component {
       id: idToBeAdded,
       title: title,
       imgSrc: imgSrc,
-      content: content
+      content: content,
+      type: type
     });
   };
 
@@ -116,7 +117,7 @@ class App extends Component {
 
   handleTypeChange = e => this.setState({ type: e.target.value });
 
-  handleAddPostSubmit = () => this.putDataToDB(this.state.title, this.state.imgSrc, this.state.content);
+  handleAddPostSubmit = () => this.putDataToDB(this.state.title, this.state.imgSrc, this.state.content, this.state.type);
 
   handleDeletePostSubmit = () => this.deleteFromDB(this.state.idToDelete);
 
