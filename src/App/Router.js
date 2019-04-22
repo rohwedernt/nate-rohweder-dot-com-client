@@ -45,10 +45,6 @@ class Router extends React.Component {
                     render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='travel' />}
                 />
                 <Route 
-                    path='/craftBeerStuff'
-                    render={() => <PostViewer {...this.props} setId={this.setCurrentPostId} postType='beer' />}
-                />
-                <Route 
                     path='/post/:id'
                     render={() => <Post postData={currentPost} />}
                 />

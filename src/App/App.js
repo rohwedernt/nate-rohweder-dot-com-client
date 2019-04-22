@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import axios from "axios";
-import Main from './Main';
+import Navigation from './components/Navigation';
+import Router from './Router';
 import './App.css';
 
 
@@ -39,10 +40,10 @@ class App extends Component {
 
   componentDidMount() {
     this.getDataFromDb();
-    if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
-      this.setState({ intervalIsSet: interval });
-    }
+    // if (!this.state.intervalIsSet) {
+    //   let interval = setInterval(this.getDataFromDb, 1000);
+    //   this.setState({ intervalIsSet: interval });
+    // }
   }
 
   componentWillUnmount() {
@@ -72,6 +73,8 @@ class App extends Component {
       content: content,
       type: type
     });
+
+    this.getDataFromDb();
   };
 
   deleteFromDB = idTodelete => {
@@ -87,6 +90,8 @@ class App extends Component {
         id: objIdToDelete
       }
     });
+
+    this.getDataFromDb();
   };
 
   updateDB = (idToUpdate, title, imgSrc, content) => {
@@ -105,13 +110,15 @@ class App extends Component {
         content: content
       }
     });
+
+    this.getDataFromDb();
   };
 
   handleTitleChange = e => this.setState({ title: e.target.value });
 
   handleImgSrcChange = e => this.setState({ imgSrc: e.target.value });
 
-  handleContentChange = e => this.setState({ content: e.target.value });
+  handleContentChange = e => this.setState({ content: e});
 
   handleIdChange = e => this.setState({ idToDelete: e.target.value });
 
@@ -131,16 +138,17 @@ class App extends Component {
       handleContentChange: this.handleContentChange,
       handleIdChange: this.handleIdChange,
       handleTypeChange: this.handleTypeChange,
-      handleAddPostSubmit: this.handleAddPostSubmit,
-      handleDeletePostSubmit: this.handleDeletePostSubmit,
-      handleUpdatePostSubmit: this.handleUpdatePostSubmit
+      handleAddPostSubmit: this.handleAddPostSubmit.bind(this),
+      handleDeletePostSubmit: this.handleDeletePostSubmit.bind(this),
+      handleUpdatePostSubmit: this.handleUpdatePostSubmit.bind(this)
     }
     return (
       <div style={{width: '100%'}}>
         <MuiThemeProvider theme={theme}>
           <CssBaseline />
           <div style={style}>
-            <Main routerProps={routerProps} />
+            <Navigation />
+            <Router routerProps={routerProps}/>
           </div>
         </MuiThemeProvider>
       </div>

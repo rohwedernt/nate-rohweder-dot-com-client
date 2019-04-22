@@ -8,7 +8,7 @@ const PostAnimatorElement = posed.div({
     delay: 0,
     transition: {
       y: { type: 'spring', stiffness: 200, damping: 15 },
-      default: { duration: 2000 }
+      default: { duration: 500 }
     }
   },
   exit: {

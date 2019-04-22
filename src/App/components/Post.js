@@ -29,27 +29,24 @@ const avatarStyle = {
     width: '300px',
     height: '300px',
     borderRadius: '5px',
-    margin: '0 20px 20px 0'
+    margin: '0 20px 20px 0',
+    border: '2px solid #383838'
 }
 
-const subtitleStyle = {
-    fontWeight: 'bold'
-}
+
 
 function Post(props) {
   if(props.postData) {
     const title = props.postData.title;
-    const img = props.postData.imgSrc;
     const content = props.postData.content;
     
     return(
       <PostAnimator>
-        <Paper className={props.classes.root} elevation={4}>
+        <Paper className={props.classes.root} elevation={4} style={{maxHeight: 600, overflow: 'scroll'}}>
           <div style={postStyle}>{title}</div>
           <Typography component="p">
-            <Avatar style={avatarStyle} src={img} className={props.classes.avatar} />
-            {/* <p style={subtitleStyle}>{aboutPost.welcome.title},</p> */}
-            {content}
+            {/* <Avatar style={avatarStyle} src={img} className={props.classes.avatar} /> */}
+            <div dangerouslySetInnerHTML={{ __html: content}} />
           </Typography>
         </Paper>
       </PostAnimator>
