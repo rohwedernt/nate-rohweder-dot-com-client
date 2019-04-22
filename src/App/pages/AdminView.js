@@ -1,6 +1,8 @@
 import React from 'react';
 import AdminInput from '../components/AdminInput';
 import PostLog from '../components/PostLog';
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 function AdminView(props) {
@@ -19,16 +21,21 @@ function AdminView(props) {
         <div>
             <div style={{ padding: "20px" }}>
             <h3>Add Post</h3>
-            <AdminInput onChange={handleTitleChange} placeholder='title' />
-            <AdminInput onChange={handleImgSrcChange} placeholder='image' />
-            <AdminInput onChange={handleContentChange} placeholder='content' />
             <select onChange={handleTypeChange} >
+                <option value="" selected disabled hidden>post type</option>
                 <option value="code">Code</option>
                 <option value="music">Music</option>
-                <option value="beer">Craft Beer</option>
                 <option value="travel">Travel</option>
                 <option value="about">About</option>
             </select>
+            <AdminInput onChange={handleTitleChange} placeholder='title' />
+            <AdminInput onChange={handleImgSrcChange} placeholder='image' />
+            <CKEditor
+                editor={ ClassicEditor }
+                onChange={ ( event, editor ) => {
+                    handleContentChange(editor.getData());
+                } }
+            />
             <button onClick={handleAddPostSubmit}>
                 ADD
             </button>
