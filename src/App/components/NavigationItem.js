@@ -10,7 +10,9 @@ class NavigationItem extends Component {
             to={this.props.destination} 
             className={this.props.class}
             activeClassName="selected"
-          >{this.props.text}</NavLink>
+          >
+            {this.props.text}
+          </NavLink>
         </li>
     );
   }

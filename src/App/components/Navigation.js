@@ -3,12 +3,7 @@ import NavigationItem from './NavigationItem';
 
 const style = {
     display: 'flex',
-    justifyContent: 'center',
-}
-
-const ulStyle = {
-  listStyleType: 'none',
-  padding: '0',
+    justifyContent: 'center'
 }
 
 class Navigation extends Component {
@@ -36,10 +31,6 @@ class Navigation extends Component {
           <NavigationItem 
             destination="/travelStuff" 
             text="travelStuff" 
-          />
-          <NavigationItem
-            destination="/craftBeerStuff"
-            text="craftBeerStuff"
           />
         </ul>
       </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import posed from 'react-pose';
-import {Github, Facebook, LinkedIn, Twitter, Instagram} from '../icons/icons';
-import SocialIcon from '../components/SocialIcon';
+import {Github, LinkedIn, Twitter, Facebook, Instagram} from '../icons/icons';
 
 
 const HomeContentAnimator = posed.div({
@@ -17,6 +16,12 @@ const HomeContentAnimator = posed.div({
   closed: { y: '-10%', delay: 300 }
 });
 
+const styles = {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column'
+}
+
 class Home extends React.PureComponent {
   state = { isOpen: false };
 
@@ -28,25 +33,14 @@ class Home extends React.PureComponent {
 
   render() {
     const { isOpen } = this.state;
-
     return (
-        <HomeContentAnimator className="blog-content" pose={isOpen ? 'open' : 'closed'}>
-          <SocialIcon target='https://github.com/rohwedernt'>
-            <Github />
-         </SocialIcon>
-          <SocialIcon target='https://www.linkedin.com/in/nate-rohweder-8b1026121/'>
-            <LinkedIn />
-          </SocialIcon>
-          <SocialIcon target='https://twitter.com/nrohweder1'>
-            <Twitter />
-          </SocialIcon>
-          <SocialIcon target='https://www.facebook.com/rohwedernt'>
-            <Facebook />
-         </SocialIcon>
-          <SocialIcon target='https://www.instagram.com/naterohweder/'>
-            <Instagram />
-          </SocialIcon>
-       </HomeContentAnimator>
+        <HomeContentAnimator style={styles} pose={isOpen ? 'open' : 'closed'}>
+          <Github target='https://github.com/rohwedernt'/>
+          <LinkedIn target='https://www.linkedin.com/in/nate-rohweder-8b1026121/' />
+          <Twitter target='https://twitter.com/nrohweder1' />
+          <Facebook target='https://www.facebook.com/rohwedernt' />
+          <Instagram target='https://www.instagram.com/naterohweder/' />
+        </HomeContentAnimator>
     );
   }
 }

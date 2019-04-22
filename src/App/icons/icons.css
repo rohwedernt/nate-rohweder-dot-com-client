@@ -1,11 +1,8 @@
 .icon {
-    position: relative;
-    height: 80px;
-    width: 80px;
-    left: -232px;
+    height: 50px;
+    width: 50px;
     filter: grayscale(100%);
-    margin: 0 auto;
-    padding: 15px;
+    margin: 30px 460px 0px 30px;
 }
 
 .icon:hover {
